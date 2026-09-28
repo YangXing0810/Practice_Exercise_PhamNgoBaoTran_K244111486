@@ -1,5 +1,5 @@
 <p>customer-group works!</p>
-{{errMessage}}
+{{errMessage()}}
 <table border="1">
     <tr>
         <th>Id</th>
@@ -8,7 +8,7 @@
         <th>Age</th>
         <th>#</th>
     </tr>
-    <tbody *ngFor="let g of customerGroups">
+    <tbody *ngFor="let g of customerGroups()">
         <tr>
             <td colspan="5">{{g.CustomerTypeId}} - {{g.CustomterTypeName}}</td>
         </tr>
@@ -17,7 +17,7 @@
             <td>{{c.Name}}</td>
             <td>{{c.Email}}</td>
             <td>{{c.Age}}</td>
-            <td><img [src]="c.Image"></td>
+            <td><img [src]="c.Image" [alt]="c.Name" (error)="onImageError($event, c.Name)" class="customer-avatar"></td>
         </tr>
     </tbody>
 </table>
